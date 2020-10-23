@@ -137,6 +137,7 @@
         <button class="btn" id="docRaptor">Export PDF with DocRaptor</button>
         <button class="btn" id="pdfmake">Export PDF with pdfmake</button>
         <button class="btn" id="jsPDF">Export PDF with jsPDF</button>
+        <button class="btn" id="browserPrint">Export PDF with browser print</button>
       </div>
       <table id="styledTable">
         <caption>MLB World Series Winners*</caption>
@@ -842,16 +843,86 @@
       </table>
     </main>
     <script src="//docraptor.com/docraptor-1.0.0.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.min.js" integrity="sha512-VIF8OqBWob/wmCvrcQs27IrQWwgr3g+iA4QQ4hH/YeuYBIoAUluiwr/NX5WQAQgUaVx39hs6l05cEOIGEB+dmA==" crossorigin="anonymous"></script>
     <script>
-      function downloadPDF() {
-        DocRaptor.createAndDownloadDoc("YOUR_API_KEY_HERE", {
+      // START: DocRaptor
+      function downloadPDFWithDocRaptor() {
+        DocRaptor.createAndDownloadDoc('YOUR_API_KEY_HERE', {
           test: true, // test documents are free, but watermarked
-          type: "pdf",
+          type: 'pdf',
+          name: 'MLB World Series Winners',
           document_content: document.querySelector('html').innerHTML,
         })
       }
 
-      document.querySelector('#docRaptor').addEventListener('click', downloadPDF);
+      document.querySelector('#docRaptor').addEventListener('click', downloadPDFWithDocRaptor);
+      // END: DocRaptor
+
+
+      // START: pdfmake
+      function downloadPDFWithPDFMake() {
+        var tableHeaderText = [...document.querySelectorAll('#styledTable thead tr th')].map(thElement => ({ text: thElement.textContent, style: 'tableHeader' }));
+
+        var tableRowCells = [...document.querySelectorAll('#styledTable tbody tr td')].map(tdElement => ({ text: tdElement.textContent, style: 'tableData' }));
+        var tableDataAsRows = tableRowCells.reduce((rows, cellData, index) => {
+          if (index % 4 === 0) {
+            rows.push([]);
+          }
+
+          rows[rows.length - 1].push(cellData);
+          return rows;
+        }, []);
+
+        var docDefinition = {
+          header: { text: 'MLB World Series Winners', alignment: 'center' },
+          footer: function(currentPage, pageCount) { return ({ text: `Page ${currentPage} of ${pageCount}`, alignment: 'center' }); },
+          content: [
+            {
+              style: 'tableExample',
+              table: {
+                headerRows: 1,
+                body: [
+                  tableHeaderText,
+                  ...tableDataAsRows,
+                ]
+              },
+              layout: {
+                fillColor: function(rowIndex) {
+                  if (rowIndex === 0) {
+                    return '#0f4871';
+                  }
+                  return (rowIndex % 2 === 0) ? '#f2f2f2' : null;
+                }
+              },
+            },
+          ],
+          styles: {
+            tableExample: {
+              margin: [0, 20, 0, 80],
+            },
+            tableHeader: {
+              margin: 12,
+              color: 'white',
+            },
+            tableData: {
+              margin: 12,
+            },
+          },
+        };
+        pdfMake.createPdf(docDefinition).download('MLB World Series Winners');
+      }
+
+      document.querySelector('#pdfmake').addEventListener('click', downloadPDFWithPDFMake);
+      // END: pdfmake
+
+
+      // START: browser print (native functionality, right-click >> Print (or Command + P))
+      function downloadPDFWithBrowserPrint() {
+        window.print();
+      }
+      document.querySelector('#browserPrint').addEventListener('click', downloadPDFWithBrowserPrint);
+      // END: browser print
     </script>
   </body>
 </html>
