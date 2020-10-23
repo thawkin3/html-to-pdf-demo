@@ -95,3 +95,9 @@ h1 {
 #styledTable tfoot {
   text-align: right;
 }
+
+@media print {
+  header, .buttonContainer {
+    display: none;
+  }
+}
