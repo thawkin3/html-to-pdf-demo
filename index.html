@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML to PDF Demo</title>
+    <meta name="description" content="HTML to PDF Demo" />
+    <meta name="author" content="Tyler Hawkins" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  
+  <body>
+    <h1>HTML to PDF Demo</h1>
+    <p>Here we have a lengthy styled table. What will the PDF output look like when we export the data?</p>
+    
+    <div class="buttonContainer">
+      <button class="btn" id="docRaptor">Export PDF with DocRaptor</button>
+      <button class="btn" id="pdfmake">Export PDF with pdfmake</button>
+      <button class="btn" id="jsPDF">Export PDF with jsPDF</button>
+    </div>
+
+    <table id="styledTable">
+      <caption>MLB World Series Winners*</caption>
+      <thead>
+        <tr class="colhead">
+          <th>SEASON</th>
+          <th>WINNER</th>
+          <th>LOSER</th>
+          <th>SERIES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="oddrow">
+          <td>2018</td>
+          <td>Boston Red Sox</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2017</td>
+          <td>Houston Astros</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2016</td>
+          <td>Chicago Cubs</td>
+          <td>Cleveland Indians</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2015</td>
+          <td>Kansas City Royals</td>
+          <td>New York Mets</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2014</td>
+          <td>San Francisco Giants</td>
+          <td>Kansas City Royals</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2013</td>
+          <td>Boston Red Sox</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2012</td>
+          <td>San Francisco Giants</td>
+          <td>Detroit Tigers</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2011</td>
+          <td>St. Louis Cardinals</td>
+          <td>Texas Rangers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2010</td>
+          <td>San Francisco Giants</td>
+          <td>Texas Rangers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2009</td>
+          <td>New York Yankees</td>
+          <td>Philadelphia Phillies</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2008</td>
+          <td>Philadelphia Phillies</td>
+          <td>Tampa Bay Rays</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2007</td>
+          <td>Boston Red Sox</td>
+          <td>Colorado Rockies</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2006</td>
+          <td>St. Louis Cardinals</td>
+          <td>Detroit Tigers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2005</td>
+          <td>Chicago White Sox</td>
+          <td>Houston Astros</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2004</td>
+          <td>Boston Red Sox</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2003</td>
+          <td>Florida Marlins</td>
+          <td>New York Yankees</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2002</td>
+          <td>Anaheim Angels</td>
+          <td>San Francisco Giants</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>2001</td>
+          <td>Arizona Diamondbacks</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>2000</td>
+          <td>New York Yankees</td>
+          <td>New York Mets</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1999</td>
+          <td>New York Yankees</td>
+          <td>Atlanta Braves</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1998</td>
+          <td>New York Yankees</td>
+          <td>San Diego Padres</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1997</td>
+          <td>Florida Marlins</td>
+          <td>Cleveland Indians</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1996</td>
+          <td>New York Yankees</td>
+          <td>Atlanta Braves</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1995</td>
+          <td>Atlanta Braves</td>
+          <td>Cleveland Indians</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1993</td>
+          <td>Toronto Blue Jays</td>
+          <td>Philadelphia Phillies</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1992</td>
+          <td>Toronto Blue Jays</td>
+          <td>Atlanta Braves</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1991</td>
+          <td>Minnesota Twins</td>
+          <td>Atlanta Braves</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1990</td>
+          <td>Cincinnati Reds</td>
+          <td>Oakland Athletics</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1989</td>
+          <td>Oakland Athletics</td>
+          <td>San Francisco Giants</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1988</td>
+          <td>Los Angeles Dodgers</td>
+          <td>Oakland Athletics</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1987</td>
+          <td>Minnesota Twins</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1986</td>
+          <td>New York Mets</td>
+          <td>Boston Red Sox</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1985</td>
+          <td>Kansas City Royals</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1984</td>
+          <td>Detroit Tigers</td>
+          <td>San Diego Padres</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1983</td>
+          <td>Baltimore Orioles</td>
+          <td>Philadelphia Phillies</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1982</td>
+          <td>St. Louis Cardinals</td>
+          <td>Milwaukee Brewers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1981</td>
+          <td>Los Angeles Dodgers</td>
+          <td>New York Yankees</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1980</td>
+          <td>Philadelphia Phillies</td>
+          <td>Kansas City Royals</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1979</td>
+          <td>Pittsburgh Pirates</td>
+          <td>Baltimore Orioles</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1978</td>
+          <td>New York Yankees</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1977</td>
+          <td>New York Yankees</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1976</td>
+          <td>Cincinnati Reds</td>
+          <td>New York Yankees</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1975</td>
+          <td>Cincinnati Reds</td>
+          <td>Boston Red Sox</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1974</td>
+          <td>Oakland Athletics</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1973</td>
+          <td>Oakland Athletics</td>
+          <td>New York Mets</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1972</td>
+          <td>Oakland Athletics</td>
+          <td>Cincinnati Reds</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1971</td>
+          <td>Pittsburgh Pirates</td>
+          <td>Baltimore Orioles</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1970</td>
+          <td>Baltimore Orioles</td>
+          <td>Cincinnati Reds</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1969</td>
+          <td>New York Mets</td>
+          <td>Baltimore Orioles</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1968</td>
+          <td>Detroit Tigers</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1967</td>
+          <td>St. Louis Cardinals</td>
+          <td>Boston Red Sox</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1966</td>
+          <td>Baltimore Orioles</td>
+          <td>Los Angeles Dodgers</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1965</td>
+          <td>Los Angeles Dodgers</td>
+          <td>Minnesota Twins</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1964</td>
+          <td>St. Louis Cardinals</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1963</td>
+          <td>Los Angeles Dodgers</td>
+          <td>New York Yankees</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1962</td>
+          <td>New York Yankees</td>
+          <td>San Francisco Giants</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1961</td>
+          <td>New York Yankees</td>
+          <td>Cincinnati Reds</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1960</td>
+          <td>Pittsburgh Pirates</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1959</td>
+          <td>Los Angeles Dodgers</td>
+          <td>Chicago White Sox</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1958</td>
+          <td>New York Yankees</td>
+          <td>Milwaukee Braves</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1957</td>
+          <td>Milwaukee Braves</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1956</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1955</td>
+          <td>Brooklyn Dodgers</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1954</td>
+          <td>New York Giants</td>
+          <td>Cleveland Indians</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1953</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1952</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1951</td>
+          <td>New York Yankees</td>
+          <td>New York Giants</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1950</td>
+          <td>New York Yankees</td>
+          <td>Philadelphia Phillies</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1949</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1948</td>
+          <td>Cleveland Indians</td>
+          <td>Boston Braves</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1947</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1946</td>
+          <td>St. Louis Cardinals</td>
+          <td>Boston Red Sox</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1945</td>
+          <td>Detroit Tigers</td>
+          <td>Chicago Cubs</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1944</td>
+          <td>St. Louis Cardinals</td>
+          <td>St. Louis Browns</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1943</td>
+          <td>New York Yankees</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1942</td>
+          <td>St. Louis Cardinals</td>
+          <td>New York Yankees</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1941</td>
+          <td>New York Yankees</td>
+          <td>Brooklyn Dodgers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1940</td>
+          <td>Cincinnati Reds</td>
+          <td>Detroit Tigers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1939</td>
+          <td>New York Yankees</td>
+          <td>Cincinnati Reds</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1938</td>
+          <td>New York Yankees</td>
+          <td>Chicago Cubs</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1937</td>
+          <td>New York Yankees</td>
+          <td>New York Giants</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1936</td>
+          <td>New York Yankees</td>
+          <td>New York Giants</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1935</td>
+          <td>Detroit Tigers</td>
+          <td>Chicago Cubs</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1934</td>
+          <td>St. Louis Cardinals</td>
+          <td>Detroit Tigers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1933</td>
+          <td>New York Giants</td>
+          <td>Washington Senators</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1932</td>
+          <td>New York Yankees</td>
+          <td>Chicago Cubs</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1931</td>
+          <td>St. Louis Cardinals</td>
+          <td>Philadelphia Athletics</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1930</td>
+          <td>Philadelphia Athletics</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1929</td>
+          <td>Philadelphia Athletics</td>
+          <td>Chicago Cubs</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1928</td>
+          <td>New York Yankees</td>
+          <td>St. Louis Cardinals</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1927</td>
+          <td>New York Yankees</td>
+          <td>Pittsburgh Pirates</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1926</td>
+          <td>St. Louis Cardinals</td>
+          <td>New York Yankees</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1925</td>
+          <td>Pittsburgh Pirates</td>
+          <td>Washington Senators</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1924</td>
+          <td>Washington Senators</td>
+          <td>New York Giants</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1923</td>
+          <td>New York Yankees</td>
+          <td>New York Giants</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1922</td>
+          <td>New York Giants</td>
+          <td>New York Yankees</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1921</td>
+          <td>New York Giants</td>
+          <td>New York Yankees</td>
+          <td>5-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1920</td>
+          <td>Cleveland Indians</td>
+          <td>Brooklyn Robins</td>
+          <td>5-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1919</td>
+          <td>Cincinnati Reds</td>
+          <td>Chicago White Sox</td>
+          <td>5-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1918</td>
+          <td>Boston Red Sox</td>
+          <td>Chicago Cubs</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1917</td>
+          <td>Chicago White Sox</td>
+          <td>New York Giants</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1916</td>
+          <td>Boston Red Sox</td>
+          <td>Brooklyn Robins</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1915</td>
+          <td>Boston Red Sox</td>
+          <td>Philadelphia Phillies</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1914</td>
+          <td>Boston Braves</td>
+          <td>Philadelphia Athletics</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1913</td>
+          <td>Philadelphia Athletics</td>
+          <td>New York Giants</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1912</td>
+          <td>Boston Red Sox</td>
+          <td>New York Giants</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1911</td>
+          <td>Philadelphia Athletics</td>
+          <td>New York Giants</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1910</td>
+          <td>Philadelphia Athletics</td>
+          <td>Chicago Cubs</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1909</td>
+          <td>Pittsburgh Pirates</td>
+          <td>Detroit Tigers</td>
+          <td>4-3</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1908</td>
+          <td>Chicago Cubs</td>
+          <td>Detroit Tigers</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1907</td>
+          <td>Chicago Cubs</td>
+          <td>Detroit Tigers</td>
+          <td>4-0</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1906</td>
+          <td>Chicago White Sox</td>
+          <td>Chicago Cubs</td>
+          <td>4-2</td>
+        </tr>
+        <tr class="oddrow">
+          <td>1905</td>
+          <td>New York Giants</td>
+          <td>Philadelphia Athletics</td>
+          <td>4-1</td>
+        </tr>
+        <tr class="evenrow">
+          <td>1903</td>
+          <td>Boston Americans</td>
+          <td>Pittsburgh Pirates</td>
+          <td>5-3</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">*All data is from <a href="http://www.espn.com/mlb/worldseries/history/winners">ESPN</a>.</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <script src="//docraptor.com/docraptor-1.0.0.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
