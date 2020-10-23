@@ -8,7 +8,7 @@ var downloadPDF = function() {
     // javascript: true,                                        // enable JavaScript processing
     prince_options: {
       media: "screen",                                       // use screen styles instead of print styles
-      baseurl: "http://127.0.0.1:5500/"
+      baseurl: "http://tylerhawkins.info/html-to-pdf-demo",
     }
   })
 }
