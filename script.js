@@ -4,7 +4,7 @@ var downloadPDF = function() {
     type: "pdf",
     document_content: document.querySelector('html').innerHTML,
     prince_options: {
-      baseurl: "tylerhawkins.info/html-to-pdf-demo",
+      baseurl: "http://tylerhawkins.info/html-to-pdf-demo",
     }
   })
 }
