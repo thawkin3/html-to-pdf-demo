@@ -842,9 +842,19 @@
         </tfoot>
       </table>
     </main>
+
+    <!-- For DocRaptor -->
     <script src="//docraptor.com/docraptor-1.0.0.js"></script>
+
+    <!-- For pdfmake -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.min.js" integrity="sha512-VIF8OqBWob/wmCvrcQs27IrQWwgr3g+iA4QQ4hH/YeuYBIoAUluiwr/NX5WQAQgUaVx39hs6l05cEOIGEB+dmA==" crossorigin="anonymous"></script>
+    
+    <!-- For jsPDF -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.0/purify.min.js" integrity="sha512-pCLEWaRgW+fJYJXoFb6sm5LHmXMW8sp6dFmdN/MjRO54Qc3vcPEjRfvMqgwOAzn+do/JDR75vgpWerWVrDvdRQ==" crossorigin="anonymous"></script>
+    
     <script>
       // START: DocRaptor
       function downloadPDFWithDocRaptor() {
@@ -915,6 +925,24 @@
 
       document.querySelector('#pdfmake').addEventListener('click', downloadPDFWithPDFMake);
       // END: pdfmake
+
+
+      // START: jsPDF
+      function downloadPDFWithjsPDF() {
+        var doc = new jspdf.jsPDF('p', 'pt', 'a4');
+
+        doc.html(document.querySelector('#styledTable'), {
+          callback: function (doc) {
+            doc.save('MLB World Series Winners.pdf');
+          },
+          margin: [60, 60, 60, 60],
+          x: 32,
+          y: 32,
+        });
+      }
+
+      document.querySelector('#jsPDF').addEventListener('click', downloadPDFWithjsPDF);
+      // END: jsPDF
 
 
       // START: browser print (native functionality, right-click >> Print (or Command + P))
