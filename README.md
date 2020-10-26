@@ -19,4 +19,4 @@ This project is set up in the simplest way possible: no build tools, just an `in
 
 ## Running Locally
 
-Since there are no build tools included, simple use a static site hosting tool of your choice to run this locally. Some of my favorites are MAMP (or WAMP or LAMP) or the VS Code "Live Server" extension.
+Since there are no build tools included, simply use a static site hosting tool of your choice to run this locally. Some of my favorites are MAMP (or WAMP or LAMP) or the VS Code "Live Server" extension.
