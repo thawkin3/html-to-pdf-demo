@@ -9,6 +9,10 @@ This project is a demo of exporting HTML content as PDFs using various html-to-p
 - [jsPDF](https://github.com/MrRio/jsPDF)
 - [native browser print functionality](https://www.w3schools.com/jsref/met_win_print.asp)
 
+## Example Exports
+
+I've included several PDFs in the `example-exports` directory containing the output from the various libraries I explored.
+
 ## Project Structure
 
 This project is set up in the simplest way possible: no build tools, just an `index.html` file and some JavaScript files. The main JavaScript file is called `pdfExportMethods.js` and contains the setup code for each PDF export option. The other JavaScript files are the third-party libraries that I've included in the project rather than pulling from a CDN.
