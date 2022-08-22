@@ -8,6 +8,8 @@ This project is a demo of exporting HTML content as PDFs using various html-to-p
 - [pdfmake](http://pdfmake.org/)
 - [jsPDF](https://github.com/MrRio/jsPDF)
 - [native browser print functionality](https://www.w3schools.com/jsref/met_win_print.asp)
+- [Extensions of HTML File](
+https://www.scaler.com/topics/what-is-the-extension-of-html-file/)
 
 ## Example Exports
 
